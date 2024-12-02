@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bupt.stockassistant.mapper.StockListMapper">
+    <select id="queryStockListByDateMain" resultType="com.bupt.stockassistant.entity.StockList" parameterType="java.lang.String" >
+        SELECT
+        t.`id`, t.`predict_date`, t.`model_name`, t.`ranked_stocks`, t.`predict_time`
+        FROM yc_Rank_STAN t
+        where t.predict_date = #{date} AND t.model_info = 'MAIN_board_1_split_4_norm_5_moneyflow_huber0072per' AND t.model_name = 'fxy_STAN'
+    </select>
+    <select id="queryStockListByDateGem" resultType="com.bupt.stockassistant.entity.StockList" parameterType="java.lang.String" >
+        SELECT
+        t.`id`, t.`predict_date`, t.`model_name`, t.`ranked_stocks`, t.`predict_time`
+        FROM yc_Rank_STAN t
+        where t.predict_date = #{date} AND t.model_info = 'GEM_board_2_split_4_norm_5_moneyflow_huber' AND t.model_name = 'fxy_STAN'
+    </select>
+    <select id="queryStockListByDateStar" resultType="com.bupt.stockassistant.entity.StockList" parameterType="java.lang.String" >
+        SELECT
+        t.`id`, t.`predict_date`, t.`model_name`, t.`ranked_stocks`, t.`predict_time`
+        FROM yc_Rank_STAN t
+        where t.predict_date = #{date} AND t.model_info = 'STAR_board_1_split_4_norm_5_moneyflow_djpair3' AND t.model_name = 'fxy_STAN'
+    </select>
+</mapper>

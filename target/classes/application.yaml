@@ -1,0 +1,30 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: StockAssistant
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://123.56.41.50:3306/stock_system?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 6*DyoSyB5H0G
+  redis:
+    host: 8.140.230.69
+    port: 6379
+    password: bSMAyMBcv6nO
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 1
+        time-between-eviction-runs: 10s
+  jackson:
+    default-property-inclusion: non_null
+mybatis-plus:
+  type-aliases-package: com.bupt.stockassistant.entity
+logging:
+  level:
+    com.bupt: debug
+
+# docker build -t sa .
+# docker run -d -p 80:8081 --name sa sa
